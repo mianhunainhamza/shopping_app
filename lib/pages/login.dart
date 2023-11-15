@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/utils/routes.dart';
+import 'package:shopping_app/widgets/theme.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -29,7 +31,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -46,8 +48,7 @@ class _LoginState extends State<Login> {
                   "Welcome $name",
                   style: const TextStyle(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87),
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -61,7 +62,8 @@ class _LoginState extends State<Login> {
                         decoration: const InputDecoration(
                             hintText: "Enter username",
                             labelText: "Username",
-                            labelStyle: TextStyle(fontSize: 18)),
+                            // labelStyle: TextStyle(fontSize: 18,color: Colors.white)
+                    ),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Username cannot be empty";
@@ -80,6 +82,7 @@ class _LoginState extends State<Login> {
                           decoration: const InputDecoration(
                             hintText: "Enter Password",
                             labelText: "Password",
+                              // labelStyle: TextStyle(fontSize: 18,color: C),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -96,7 +99,7 @@ class _LoginState extends State<Login> {
                         height: 40.0,
                       ),
                       Material(
-                        color: Colors.deepPurple,
+                        color: MyTheme.darkBlusihColor,
                         borderRadius:
                             BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
